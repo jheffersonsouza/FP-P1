@@ -8,7 +8,7 @@
 #   |  2. Ao final imprima o total de eleitores, a quantidade total de votos válidos, o
 #       percentual de votos válidos de cada candidato e o percentual de votos
 #       brancos e nulos.
-
+from Graph import plot
 
 # Votos válidos: É válido o voto dado diretamente a um determinado candidato ou a um partido
 print('-' * 80)
@@ -71,3 +71,7 @@ else:
                   '\n{}% dos eleitores votarem nulo'.format(porVN)
                   )
             print('-' * 80)
+
+
+
+
