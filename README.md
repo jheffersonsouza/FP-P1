@@ -5,6 +5,7 @@ Adicionado o segundo turno
 
 Features:
 - Caso dois ou mais candidatos empatem no primeiro turno, será feita uma nova votação para descidir quem será o vencedor da eleição
+- Adicionado cores à no terminal, como "vencendor", "votos", "Numeros%" Etc.
 
 Bugs:
 - Caso o segundo turno der empate, exibira apenas o candidato mais proximo do primeiro
