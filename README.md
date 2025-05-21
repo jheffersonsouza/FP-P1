@@ -3,15 +3,16 @@ Projeto 1 da disciplina de Fundamentos de Programação.
 1º Semestre do curso de [Análise e Desenvolvimento de Sistemas](https://www.ufc.br/ensino/guia-de-profissoes/17805-analise-e-desenvolvimento-de-sistemas)
 
 Equipe: Jhefferson e Pablo.
+## Restrição técnica
+Fora funcionalidades extra todo o codigo teve que ser feito utilizando somente dos conteúdos ensinados nas primeiras aulas (input,print,if,elif,else,for,while, operadores aritméticos).
+Tuplas,listas e dicionarios *não* são permitidos, entre outras funções, bibliotecas e etc... 
 
 ## Enunciado
 Desenvolver o código em Python das questões abaixo:
 1. Em uma eleição para representante de turma concorreram 4 candidatos (C1, C2,
 C3 e C4). Durante a apuração, além dos votos de cada candidato, foram apurados
-os votos nulos e brancos.
-1. Escreva um programa que leia a quantidade dos votos válidos de cada
-candidato, os votos brancos e os votos nulos.
-2. Ao final imprima o total de eleitores, a quantidade total de votos válidos, o
+os votos nulos e brancos. Escreva um programa que leia a quantidade dos votos válidos de cada
+candidato, os votos brancos e os votos nulos. Ao final imprima o total de eleitores, a quantidade total de votos válidos, o
 percentual de votos válidos de cada candidato e o percentual de votos
 brancos e nulos.
 
