@@ -1,5 +1,5 @@
 # FP-P1
-Projeto 1 da disciplina de Fundamentos de Programação.
+Projeto 1 da disciplina de Fundamentos de Programação.<br>
 1º Semestre do curso de [Análise e Desenvolvimento de Sistemas](https://www.ufc.br/ensino/guia-de-profissoes/17805-analise-e-desenvolvimento-de-sistemas)
 
 Equipe: Jhefferson e Pablo.
