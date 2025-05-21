@@ -51,3 +51,5 @@ Features:
 Bugs:
 - Caso o segundo turno der empate, exibira apenas o candidato mais proximo do primeiro
 Ex: candidatos "2" e "3" empatem o segundo turno, aparecerá que o candidato "2" ganhou as eleições
+
+
