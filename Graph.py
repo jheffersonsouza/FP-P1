@@ -23,7 +23,7 @@ def plot(*votos: int):
     # TODO: Gostaria de aumentar o tamanho do hue também, achei pequeno.
     axes = sns.barplot(data=df, x='Candidatos', y='Votos', palette='bright', hue='Votos',)
 
-    # TODO: As porcentagens não são escalaveis  com o total de votos, em alguns casos
+    # TODO: As porcentagens não são escaláveis  com o total de votos, em alguns casos
     # a y fica muito pequeno ou muito grande. É um problema visual. Teria que fazer relativo
     # ao tamanho real  da diferença entre as 2 unidades mais proximo.
     for i, v in enumerate(votos):
