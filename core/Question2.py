@@ -7,6 +7,7 @@ Z: o número que não é nem maior e nem menor.
 maiorNumero = int(input('Digite o primeiro número:'))
 numeroDoMeio = maiorNumero
 menorNumero = maiorNumero
+#TODO: Checar com a professora se pode usar o 'continue'
 for i in range(0, 2):
     n = int(input(f'Digite o {'segundo' if i == 0 else 'terceiro'} número:'))
     if n > maiorNumero:
