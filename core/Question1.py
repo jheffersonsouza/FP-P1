@@ -87,18 +87,36 @@ if (C1 > C2 and C1 == C3 and C1 > C4) or (C1 > C2 and C1 == C3 and C1 == C4) or 
         votos_segundo_turno = int(input(f"Digite a quantidade de \033[1;32mvotos\033[0;0m do \033[1;32m{candidato}\033[0;0m no segundo turno: "))
         segundo_turno[candidato] = votos_segundo_turno
 
-        # Descobre o ganhador do segundo turno
+    # Descobre o ganhador do segundo turno
     ganhador = max(segundo_turno, key=segundo_turno.get)
     total_segundo_turno = sum(segundo_turno.values())
     porcentagem = [(voto/ total_segundo_turno) * 100 for voto in segundo_turno.values()]
-    print('-' * 80)
-    print(f"O \033[1;32mvencedor\033[0;0m do segundo turno foi \033[1;32m{ganhador}\033[0;0m com \033[1;32m{segundo_turno[ganhador]}\033[0;0m votos no segundo turno.")
 
-    print('-' * 80)
-    print(f'O \033[1;32mtotal\033[0;0m de eleitores do segundo turno foi \033[1;32m{total_segundo_turno}\033[0;0m.\n')
-    for i, candidato in enumerate(segundo_turno):
-        print(f'O \033[1;32m{candidato}\033[0;0m recebeu  \033[1;32m{round(porcentagem[i], 2)}%\033[0;0m dos \033[1;32mvotos totais\033[0;0m no segundo turno.')
-    print('-' * 80)
+    # Verificação de empate no segundo turno
+    maior_voto_segundo_turno = max(segundo_turno.values())
+    empatados = [candidato for candidato, votos in segundo_turno.items() if votos == maior_voto_segundo_turno]
+
+    if len(empatados) > 1:
+        print('-' * 80)
+        print('O segundo turno ficou \033[1;31mempatado\033[1;0m!')
+        print('\nSegundo o \033[1;32martigo 110\033[1;0m do \033[1;32mCódigo Eleitoral\033[1;0m: O \033[1;32mcritério\033[1;0m a ser utilizado nos casos de \031[1;32mempate\033[1;0m é a \033[1;32midade\033[1;0m, com o candidato mais \033[1;32mvelho\033[1;0m recebendo \033[1;32mprioridade\033[1;0m.')
+        sorteado = random.choice(empatados)
+        print(f'\nNesse caso, o \033[1;32mganhador\033[1;0m dessa eleição será o \033[1;32m{sorteado}\033[1;0m, visto que ele é o mais \033[1;32mvelho\033[1;0m entre os \033[1;32m{empatados}\033[1;0m.')
+        print('-' * 80)
+        print(f'O \033[1;32mtotal\033[0;0m de eleitores do segundo turno foi \033[1;32m{total_segundo_turno}\033[0;0m.\n')
+        for i, candidato in enumerate(segundo_turno):
+            print(f'O \033[1;32m{candidato}\033[0;0m recebeu  \033[1;32m{round(porcentagem[i], 2)}%\033[0;0m dos \033[1;32mvotos totais\033[0;0m no segundo turno.')
+        print('-' * 80)
+
+    else:
+        print('-' * 80)
+        print(f"O \033[1;32mvencedor\033[0;0m do segundo turno foi \033[1;32m{ganhador}\033[0;0m com \033[1;32m{segundo_turno[ganhador]}\033[0;0m votos no segundo turno.")
+
+        print('-' * 80)
+        print(f'O \033[1;32mtotal\033[0;0m de eleitores do segundo turno foi \033[1;32m{total_segundo_turno}\033[0;0m.\n')
+        for i, candidato in enumerate(segundo_turno):
+            print(f'O \033[1;32m{candidato}\033[0;0m recebeu  \033[1;32m{round(porcentagem[i], 2)}%\033[0;0m dos \033[1;32mvotos totais\033[0;0m no segundo turno.')
+        print('-' * 80)
 
 
 else:
