@@ -30,13 +30,13 @@ while True:
 
         # Voto Branco: O voto em branco ocorre quando o eleitor não quer votar em nenhum candidato e ao mesmo tempo deseja anular seu voto
         # Mais uma vez sanitizando entrada de votos.
-        VB = int(input('Digite a quantia de \033[1;32mvotos\033[0;0m em \033[1;32mbranco\033[0;0m:'))
+        VB = int(input('Digite a quantia de \033[1;32mvotos\033[0;0m em \033[1;32mbranco\033[0;0m: '))
         if VB < 0:
             print('Quantidade de votos brancos invalida!')
 
         else:
             # Voto Nulo: O voto nulo acontece quando o eleitor insere um número que não pertence a nenhum candidato ou partido político, podendo ser um erro intencional ou não.
-            VN = int(input('Digite a quantia de \033[1;32mvotos\033[0;0m \033[1;32mnulos\033[0;0m:'))
+            VN = int(input('Digite a quantia de \033[1;32mvotos\033[0;0m \033[1;32mnulos\033[0;0m: '))
             if VN < 0:
                 print('Quantidade de votos nulo invalida!')
 
@@ -69,8 +69,8 @@ if (C1 > C2 and C1 == C3 and C1 > C4) or (C1 > C2 and C1 == C3 and C1 == C4) or 
     '\nO \033[1;32mcandidato 2\033[0;0m recebeu \033[1;32m{}%\033[0;0m dos \033[1;32mvotos\033[0;0m válidos.'.format(porC2),
     '\nO \033[1;32mcandidato 3\033[0;0m recebeu \033[1;32m{}%\033[0;0m dos \033[1;32mvotos\033[0;0m válidos.'.format(porC3),
     '\nO \033[1;32mcandidato 4\033[0;0m recebeu \033[1;32m{}%\033[0;0m dos \033[1;32mvotos\033[0;0m válidos.'.format(porC4),
-    '\n\n\033[1;32m{}%\033[0;0m dos eleitores votaram em \033[1;32mbranco\033[0;0m'.format(porVB),
-    '\n\033[1;32m{}%\033[0;0m dos eleitores votaram \033[1;32mnulo\033[0;0m'.format(porVN)
+    '\n\n\033[1;32m{}%\033[0;0m dos eleitores votaram em \033[1;32mbranco\033[0;0m.'.format(porVB),
+    '\n\033[1;32m{}%\033[0;0m dos eleitores votaram \033[1;32mnulo\033[0;0m.'.format(porVN)
     )
     print('-' * 80)
 
@@ -80,7 +80,7 @@ if (C1 > C2 and C1 == C3 and C1 > C4) or (C1 > C2 and C1 == C3 and C1 == C4) or 
 
     # Criando uma lista dos candidatos que têm o maior número de votos
     candidatos_maiores_votos = [candidato for candidato, votos in candidatos.items() if votos == maior_voto]
-    print(f'Tivemos um empate,\033[1;32m{candidatos_maiores_votos}\033[0;0m tiveram a mesma quantidade de votos (\033[1;32m{maior_voto}\033[0;0m). O \033[1;32mganhador\033[0;0m vai ser definido por um segundo turno.\n')
+    print(f'Tivemos um empate,\033[1;32m{candidatos_maiores_votos}\033[0;0m tiveram a mesma quantidade de votos (\033[1;32m{maior_voto}\033[0;0m). O \033[1;32mganhador\033[0;0m vai ser definido por um segundo turno.')
     print('-' * 80)
     segundo_turno = {}
     for candidato in candidatos_maiores_votos:
