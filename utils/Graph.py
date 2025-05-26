@@ -6,6 +6,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 
+# TODO: Suporta plot para o segundo turno.
 def plot(*votos: int):
     """
     Essa função é bem hardcoded já que as variáveis de votos la não estão em uma lista.

@@ -87,7 +87,7 @@ print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVN}%'), VERDE('nulo')
 print('-' * 80)
 
 # Conforme o TSE se o candidato com a maior quantidade de votos não tiver pelo menos 50% dos votos válidos haverá segundo turno.
-if max(candidatos.values())/VV < VV/2:
+if max(candidatos.values()) / VV < VV / 2:
     temSegundoTurno(candidatos)
 else:
     print('O candidato {} foi {}!'.format(VERDE('vencedor'), ganhador))
