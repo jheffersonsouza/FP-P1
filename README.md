@@ -4,8 +4,8 @@ Projeto 1 da disciplina de Fundamentos de Programação.<br>
 
 Equipe: Jhefferson e Pablo.
 ## Restrição técnica
-Fora funcionalidades extra todo o codigo teve que ser feito utilizando somente dos conteúdos ensinados nas primeiras aulas (input,print,if,elif,else,for,while, operadores aritméticos).
-Tuplas,listas e dicionarios *não* são permitidos, entre outras funções, bibliotecas e etc... 
+Exceto as **funcionalidades extras** todo o codigo teve que ser feito utilizando somente dos conteúdos ensinados nas primeiras aulas (input,print,if,elif,else,for,while, operadores aritméticos).
+Tuplas,listas e dicionarios **não** são permitidos, entre outras funções, bibliotecas e etc... 
 
 ## Enunciado
 Desenvolver o código em Python das questões abaixo:
@@ -39,13 +39,11 @@ de aula!
 6. Um integrante da dupla envia o trabalho, e coloca nos comentários a
 dupla.
 
-# FP-P1
-Projeto 1 da disciplina de Fundamentos de Programação.
-
-Adicionado o segundo turno e desempate do segundo turno.
-
-Features:
-- Caso dois ou mais candidatos empatem no primeiro turno, será feita uma nova votação para descidir quem será o vencedor da eleição.
-- caso haja empate, haverá um sorteio para decidir quem será o vencedor da eleição.
+# Funcionalides Extra
+1. Cores em textos específicos no terminal.
+2. Mecanismo de segundo turno.
+3. Anúncio do vencedor.
+4. Gráfico mostrando o resultado da votação.
+5. 
 
 
