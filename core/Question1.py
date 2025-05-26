@@ -13,6 +13,8 @@
 import random
 
 from utils.Colors import VERDE, VERMELHO
+from utils.Graph import plot
+from utils.SecondRound import temSegundoTurno
 
 while True:
     # Votos válidos: É válido o voto dado diretamente a um determinado candidato ou a um partido
@@ -30,7 +32,6 @@ while True:
 
     else:
         # Como a renata nao ensinou o sys.exit() é preciso colocar tudo dentro do if-else.
-        candidatos = {"Candidato 1": C1, "Candidato 2": C2, "Candidato 3": C3, "Candidato 4": C4}
 
         # Voto Branco: O voto em branco ocorre quando o eleitor não quer votar em nenhum candidato e ao mesmo tempo deseja anular seu voto
         # Mais uma vez sanitizando entrada de votos.
@@ -60,107 +61,34 @@ while True:
                 porC4 = round(C4 / VV * 100, 2)
                 porVB = round(VB / total * 100, 2)
                 porVN = round(VN / total * 100, 2)
+                plot(C1, C2, C3, C4, VB, VN)
                 break
 
+# TODO: Atualizar os comentarios daqui e fazer uma separação de seções entre features.
 # Ganhador é o que tiver mais votos.
+# Esse dict serve para determinaro vencedor, que foge do enunciado principal ou seja pode usar
+candidatos = {"Candidato 1": C1, "Candidato 2": C2, "Candidato 3": C3, "Candidato 4": C4}
+
 ganhador = max(candidatos, key=candidatos.get)
-ganhadores = max(candidatos.values())
-if (C1 > C2 and C1 == C3 and C1 > C4) or (C1 > C2 and C1 == C3 and C1 == C4) or (C1 > C2 and C1 > C3 and C1 == C4) or (
-        C1 == C2 and C1 > C3 and C1 > C4) or (C1 == C2 and C1 == C3 and C1 > C4) or (
-        C1 == C2 and C1 > C3 and C1 == C4) or (C2 > C1 and C2 == C3 and C2 > C4) or (
-        C2 > C1 and C2 == C3 and C2 == C4) or (C2 > C1 and C2 > C3 and C2 == C4) or (
-        C2 == C1 and C2 > C3 and C2 > C4) or (C2 == C1 and C2 == C3 and C2 > C4) or (
-        C2 == C1 and C2 > C3 and C2 == C4) or (C3 > C1 and C3 == C2 and C3 > C4) or (
-        C3 > C1 and C3 == C2 and C3 == C4) or (C3 > C1 and C3 > C2 and C3 == C4) or (
-        C3 == C1 and C3 > C2 and C3 > C4) or (C3 == C1 and C3 == C2 and C3 > C4) or (
-        C3 == C1 and C3 > C2 and C3 == C4) or (C4 > C1 and C4 == C2 and C4 == C3) or (
-        C4 > C1 and C4 == C2 and C4 > C3) or (C4 > C1 and C4 > C2 and C4 == C3) or (
-        C4 == C1 and C4 > C2 and C4 > C3) or (C4 == C1 and C4 == C2 and C4 > C3) or (
-        C4 == C1 and C4 > C2 and C4 == C3) or (C4 == C2 and C4 > C1 and C4 > C3) or (
-        C4 == C2 and C4 == C1 and C4 > C3) or (C4 == C2 and C4 > C1 and C4 == C3) or (C1 == C2 == C3 == C4):
 
-    print('O {} de eleitores foi {}, a quantidade {} de {} validos foi {}.\n'
-          .format(VERDE('total'), VERDE(total), VERDE('total'), VERDE('votos'), VV))
-    print('O {} recebeu {} dos {} válidos.'.
-          format(VERDE('Candidato 1'), VERDE(f'{porC1}%'), VERDE('votos')))
-    print('O {} recebeu {} dos {} válidos.'
-          .format(VERDE('Candidato 2'), VERDE(f'{porC2}%'), VERDE('votos')))
-    print('O {} recebeu {} dos {} válidos.'
-          .format(VERDE('Candidato 3'), VERDE(f'{porC3}%'), VERDE('votos')))
-    print('O {} recebeu {} dos {} válidos.'
-          .format(VERDE('Candidato 4'), VERDE(f'{porC4}%'), VERDE('votos')))
-    print(' ')
-    print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVB}%'), VERDE('branco')))
-    print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVN}%'), VERDE('nulo')))
-    print('-' * 80)
+print('O {} de eleitores foi {}, a quantidade {} de {} validos foi {}.\n'
+      .format(VERDE('total'), VERDE(total), VERDE('total'), VERDE('votos'), VERDE(VV)))
+print('O {} recebeu {} dos {} válidos.'.
+      format(VERDE('Candidato 1'), VERDE(f'{porC1}%'), VERDE('votos')))
+print('O {} recebeu {} dos {} válidos.'
+      .format(VERDE('Candidato 2'), VERDE(f'{porC2}%'), VERDE('votos')))
+print('O {} recebeu {} dos {} válidos.'
+      .format(VERDE('Candidato 3'), VERDE(f'{porC3}%'), VERDE('votos')))
+print('O {} recebeu {} dos {} válidos.'
+      .format(VERDE('Candidato 4'), VERDE(f'{porC4}%'), VERDE('votos')))
+print(' ')
+print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVB}%'), VERDE('branco')))
+print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVN}%'), VERDE('nulo')))
+print('-' * 80)
 
-    # Encontrando o maior número de votos
-    maior_voto = max(candidatos.values())
-
-    # Criando uma lista dos candidatos que têm o maior número de votos
-    candidatos_maiores_votos = [candidato for candidato, votos in candidatos.items() if votos == maior_voto]
-    print(
-        f'Tivemos um empate,\033[1;32m{candidatos_maiores_votos}\033[0;0m tiveram a mesma quantidade de votos (\033[1;32m{maior_voto}\033[0;0m). O \033[1;32mganhador\033[0;0m vai ser definido por um segundo turno.')
-    print('-' * 80)
-    segundo_turno = {}
-    for candidato in candidatos_maiores_votos:
-        votos_segundo_turno = int(input(
-            f"Digite a quantidade de \033[1;32mvotos\033[0;0m do \033[1;32m{candidato}\033[0;0m no segundo turno: "))
-        segundo_turno[candidato] = votos_segundo_turno
-
-    # Descobre o ganhador do segundo turno
-    ganhador = max(segundo_turno, key=segundo_turno.get)
-    total_segundo_turno = sum(segundo_turno.values())
-    porcentagem = [(voto / total_segundo_turno) * 100 for voto in segundo_turno.values()]
-
-    # Verificação de empate no segundo turno
-    maior_voto_segundo_turno = max(segundo_turno.values())
-    empatados = [candidato for candidato, votos in segundo_turno.items() if votos == maior_voto_segundo_turno]
-
-    if len(empatados) > 1:
-        print('-' * 80)
-        print('O segundo turno ficou \033[1;31mempatado\033[1;0m!')
-        print(
-            '\nSegundo o \033[1;32martigo 110\033[1;0m do \033[1;32mCódigo Eleitoral\033[1;0m: O \033[1;32mcritério\033[1;0m a ser utilizado nos casos de \031[1;32mempate\033[1;0m é a \033[1;32midade\033[1;0m, com o candidato mais \033[1;32mvelho\033[1;0m recebendo \033[1;32mprioridade\033[1;0m.')
-        sorteado = random.choice(empatados)
-        print(
-            f'\nNesse caso, o \033[1;32mganhador\033[1;0m dessa eleição será o \033[1;32m{sorteado}\033[1;0m, visto que ele é o mais \033[1;32mvelho\033[1;0m entre os \033[1;32m{empatados}\033[1;0m.')
-        print('-' * 80)
-        print(
-            f'O \033[1;32mtotal\033[0;0m de eleitores do segundo turno foi \033[1;32m{total_segundo_turno}\033[0;0m.\n')
-        for i, candidato in enumerate(segundo_turno):
-            print(
-                f'O \033[1;32m{candidato}\033[0;0m recebeu  \033[1;32m{round(porcentagem[i], 2)}%\033[0;0m dos \033[1;32mvotos totais\033[0;0m no segundo turno.')
-        print('-' * 80)
-
-    else:
-        print('-' * 80)
-        print(
-            f"O \033[1;32mvencedor\033[0;0m do segundo turno foi \033[1;32m{ganhador}\033[0;0m com \033[1;32m{segundo_turno[ganhador]}\033[0;0m votos no segundo turno.")
-
-        print('-' * 80)
-        print(
-            f'O \033[1;32mtotal\033[0;0m de eleitores do segundo turno foi \033[1;32m{total_segundo_turno}\033[0;0m.\n')
-        for i, candidato in enumerate(segundo_turno):
-            print(
-                f'O \033[1;32m{candidato}\033[0;0m recebeu  \033[1;32m{round(porcentagem[i], 2)}%\033[0;0m dos \033[1;32mvotos totais\033[0;0m no segundo turno.')
-        print('-' * 80)
-
-
+# Conforme o TSE se o candidato com a maior quantidade de votos não tiver pelo menos 50% dos votos válidos haverá segundo turno.
+if max(candidatos.values())/VV < VV/2:
+    temSegundoTurno(candidatos)
 else:
     print('O candidato {} foi {}!'.format(VERDE('vencedor'), ganhador))
-
-    print('O {} de eleitores foi {}, a quantidade {} de {} validos foi {}.\n'
-          .format(VERDE('total'), VERDE(total), VERDE('total'), VERDE('votos'), VERDE(VV)))
-    print('O {} recebeu {} dos {} válidos.'.
-          format(VERDE('Candidato 1'), VERDE(f'{porC1}%'), VERDE('votos')))
-    print('O {} recebeu {} dos {} válidos.'
-          .format(VERDE('Candidato 2'), VERDE(f'{porC2}%'), VERDE('votos')))
-    print('O {} recebeu {} dos {} válidos.'
-          .format(VERDE('Candidato 3'), VERDE(f'{porC3}%'), VERDE('votos')))
-    print('O {} recebeu {} dos {} válidos.'
-          .format(VERDE('Candidato 4'), VERDE(f'{porC4}%'), VERDE('votos')))
-    print(' ')
-    print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVB}%'), VERDE('branco')))
-    print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVN}%'), VERDE('nulo')))
     print('-' * 80)
