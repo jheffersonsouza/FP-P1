@@ -20,14 +20,20 @@ def temSegundoTurno(candidatos):
 
     # Limpando candidatos para ficarem somente os dos segundo turno.
     candidatos.clear()
-    for candidato in candidatos_maiores_votos:
-        candidatos[candidato] = int(
-            input(f"Digite a quantidade de {VERDE('votos')} do {VERDE(candidato)} no segundo turno: "))
-        while candidatos[candidato] < 0:
-            print('Quantidade de {} invalida! Não existe uma quantidade {} de {}.'
-                  .format(VERMELHO('votos'), VERMELHO('negativa'), VERMELHO('votos')))
+    while True:
+        for candidato in candidatos_maiores_votos:
             candidatos[candidato] = int(
                 input(f"Digite a quantidade de {VERDE('votos')} do {VERDE(candidato)} no segundo turno: "))
+            while candidatos[candidato] < 0:
+                print('Quantidade de {} invalida! Não existe uma quantidade {} de {}.'
+                      .format(VERMELHO('votos'),  VERMELHO('negativa'),VERMELHO('votos')))
+                candidatos[candidato] = int(
+                    input(f"Digite a quantidade de {VERDE('votos')} do {VERDE(candidato)} no segundo turno: "))
+
+        if sum(candidatos.values()) > 0:
+            break
+        print('Quantidade de {} invalida! Não houve eleitores com {}. '
+              .format(VERMELHO("votos"), VERMELHO("votos validos")))
     print('-' * 140)
     # Descobre o ganhador do segundo turno
     ganhador = max(candidatos, key=candidatos.get)
@@ -42,7 +48,7 @@ def temSegundoTurno(candidatos):
         print(f'O segundo turno ficou {VERMELHO('empatado')}')
         print(
             f'Segundo o {VERDE('Artigo 110')} do {VERDE('Código Eleitoral')}. O critério a ser utilizado nos casos de {VERDE('empate')} é a {VERDE('idade')} com o candidato mais {VERDE('velho')} recebendo {VERDE('prioridade')}.')
-        ganhador =  random.choice(empatados)
+        ganhador = random.choice(empatados)
         print(
             f'Nesse caso, o {VERDE('ganhador')} dessa eleição será o {VERDE(ganhador)}, visto que ele é o mais {VERDE('velho')} entre os {VERDE(listToString(empatados))}.')
     else:
@@ -55,3 +61,5 @@ def temSegundoTurno(candidatos):
         print(
             f'O {VERDE(candidato)} recebeu {VERDE(round(porcentagem[i], 2))}{VERDE('%')} dos {VERDE('votos totais')} no segundo turno.')
     print('-' * 140)
+
+

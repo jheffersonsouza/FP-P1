@@ -39,11 +39,12 @@ de aula!
 6. Um integrante da dupla envia o trabalho, e coloca nos comentários a
 dupla.
 
+
 # Funcionalides Extra
 1. Cores em textos específicos no terminal.
 2. Mecanismo de segundo turno.
 3. Anúncio do vencedor.
 4. Gráfico mostrando o resultado da votação.
-5. 
+5. Colocar o lambasaia para tocar Acabou acabou, quando ganharmos.
 
 

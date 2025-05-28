@@ -10,8 +10,6 @@
        percentual de votos válidos de cada candidato e o percentual de votos
        brancos e nulos.
 """
-import random
-
 from utils.Colors import VERDE, VERMELHO
 from utils.Graph import plot
 from utils.SecondRound import temSegundoTurno
@@ -33,7 +31,8 @@ while True:
               .format(VERMELHO('votos'), VERMELHO('negativa'), VERMELHO('votos')))
     # Sanitizando a entrada de votos, tem que ter pelo menos um candidato com 1 voto ou mais.
     elif VV == 0:
-        print('Quantidade de {} invalida! Não houve eleitores com {}. '.format(VERMELHO("votos"),VERMELHO("votos validos")))
+        print('Quantidade de {} invalida! Não houve eleitores com {}. '
+              .format(VERMELHO("votos"),VERMELHO("votos validos")))
 
     else:
         # Como a renata nao ensinou o sys.exit() é preciso colocar tudo dentro do if-else.
@@ -69,12 +68,6 @@ while True:
                 plot(C1, C2, C3, C4, VB, VN)
                 break
 
-# TODO: Atualizar os comentarios daqui e fazer uma separação de seções entre features.
-# Ganhador é o que tiver mais votos.
-# Esse dict serve para determinaro vencedor, que foge do enunciado principal ou seja pode usar
-candidatos = {"Candidato 1": C1, "Candidato 2": C2, "Candidato 3": C3, "Candidato 4": C4}
-
-ganhador = max(candidatos, key=candidatos.get)
 
 print('O {} de eleitores foi {}, a quantidade {} de {} validos foi {}.\n'
       .format(VERDE('total'), VERDE(total), VERDE('total'), VERDE('votos'), VERDE(VV)))
@@ -91,6 +84,12 @@ print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVB}%'), VERDE('branco
 print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVN}%'), VERDE('nulo')))
 print('-' * 80)
 
+# TODO: Atualizar os comentarios daqui e fazer uma separação de seções entre features.
+# Ganhador é o que tiver mais votos.
+# Esse dict serve para determinaro vencedor, que foge do enunciado principal ou seja pode usar
+candidatos = {"Candidato 1": C1, "Candidato 2": C2, "Candidato 3": C3, "Candidato 4": C4}
+
+ganhador = max(candidatos, key=candidatos.get)
 # Conforme o TSE se o candidato com a maior quantidade de votos não tiver pelo menos 50% dos votos válidos haverá segundo turno.
 if max(candidatos.values()) / VV < VV / 2:
     temSegundoTurno(candidatos)
