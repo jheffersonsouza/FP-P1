@@ -20,9 +20,10 @@ for i in range(0, 2):
         continue
     numeroDoMeio = n
 
-print('-'*40)
+print('-' * 40)
 print('Maior número:', maiorNumero)
 print('Número do meio:', numeroDoMeio)
 print('Menor número:', menorNumero)
-print(f'Equação: (3 * {maiorNumero}) + (4 * {menorNumero}) + {numeroDoMeio} = {3 * maiorNumero + 4 * menorNumero + numeroDoMeio}')
-print('-'*40)
+print(
+    f'Equação: (3 * {maiorNumero}) + (4 * {menorNumero}) + {numeroDoMeio} = {3 * maiorNumero + 4 * menorNumero + numeroDoMeio}')
+print('-' * 40)
