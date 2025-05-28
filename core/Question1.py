@@ -24,11 +24,16 @@ while True:
     C3 = int(input('Digite a quantia de {} do {} candidato: '.format(VERDE('votos'), VERDE('terceiro'))))
     C4 = int(input('Digite a quantia de {} do {} candidato: '.format(VERDE('votos'), VERDE('quarto'))))
     print('-' * 80)
-
+    # Total de Votos válidos
+    VV = C1 + C2 + C3 + C4
+   
     # Sanitizando a entrada de votos, só pode ser >= 0.
     if C1 < 0 or C2 < 0 or C3 < 0 or C4 < 0:
         print('Quantidade de {} invalida! Não existe uma quantidade {} de {}.'
               .format(VERMELHO('votos'), VERMELHO('negativa'), VERMELHO('votos')))
+    # Sanitizando a entrada de votos, tem que ter pelo menos um candidato com 1 voto ou mais.
+    elif VV == 0:
+        print('Quantidade de {} invalida! Não houve eleitores com {}. '.format(VERMELHO("votos"),VERMELHO("votos validos")))
 
     else:
         # Como a renata nao ensinou o sys.exit() é preciso colocar tudo dentro do if-else.
