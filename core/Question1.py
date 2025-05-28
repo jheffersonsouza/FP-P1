@@ -12,6 +12,7 @@
 """
 from utils.Colors import VERDE, VERMELHO
 from utils.Graph import plot
+from utils.Music import end_song
 from utils.SecondRound import temSegundoTurno
 
 while True:
@@ -96,3 +97,4 @@ if max(candidatos.values()) / VV < VV / 2:
 else:
     print('O candidato {} foi {}!'.format(VERDE('vencedor'), ganhador))
     print('-' * 80)
+end_song()

@@ -62,4 +62,3 @@ def temSegundoTurno(candidatos):
             f'O {VERDE(candidato)} recebeu {VERDE(round(porcentagem[i], 2))}{VERDE('%')} dos {VERDE('votos totais')} no segundo turno.')
     print('-' * 140)
 
-
