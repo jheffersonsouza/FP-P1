@@ -12,7 +12,6 @@
 """
 from utils.Colors import VERDE, VERMELHO
 from utils.Graph import plot
-from utils.Music import end_song
 from utils.SecondRound import temSegundoTurno
 
 while True:
@@ -25,7 +24,7 @@ while True:
     print('-' * 80)
     # Total de Votos válidos
     VV = C1 + C2 + C3 + C4
-   
+
     # Sanitizando a entrada de votos, só pode ser >= 0.
     if C1 < 0 or C2 < 0 or C3 < 0 or C4 < 0:
         print('Quantidade de {} invalida! Não existe uma quantidade {} de {}.'
@@ -33,7 +32,7 @@ while True:
     # Sanitizando a entrada de votos, tem que ter pelo menos um candidato com 1 voto ou mais.
     elif VV == 0:
         print('Quantidade de {} invalida! Não houve eleitores com {}. '
-              .format(VERMELHO("votos"),VERMELHO("votos validos")))
+              .format(VERMELHO("votos"), VERMELHO("votos validos")))
 
     else:
         # Como a renata nao ensinou o sys.exit() é preciso colocar tudo dentro do if-else.
@@ -69,7 +68,6 @@ while True:
                 plot(C1, C2, C3, C4, VB, VN)
                 break
 
-
 print('O {} de eleitores foi {}, a quantidade {} de {} validos foi {}.\n'
       .format(VERDE('total'), VERDE(total), VERDE('total'), VERDE('votos'), VERDE(VV)))
 print('O {} recebeu {} dos {} válidos.'.
@@ -85,16 +83,13 @@ print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVB}%'), VERDE('branco
 print('{} dos eleitores votaram em {}.'.format(VERDE(f'{porVN}%'), VERDE('nulo')))
 print('-' * 80)
 
-# TODO: Atualizar os comentarios daqui e fazer uma separação de seções entre features.
-# Ganhador é o que tiver mais votos.
-# Esse dict serve para determinaro vencedor, que foge do enunciado principal ou seja pode usar
+# Esse dict serve para determinar o vencedor, que foge do enunciado principal, ou seja, pode usar
 candidatos = {"Candidato 1": C1, "Candidato 2": C2, "Candidato 3": C3, "Candidato 4": C4}
-
 ganhador = max(candidatos, key=candidatos.get)
+
 # Conforme o TSE se o candidato com a maior quantidade de votos não tiver pelo menos 50% dos votos válidos haverá segundo turno.
 if max(candidatos.values()) / VV < VV / 2:
     temSegundoTurno(candidatos)
 else:
     print('O candidato {} foi {}!'.format(VERDE('vencedor'), ganhador))
     print('-' * 80)
-end_song()

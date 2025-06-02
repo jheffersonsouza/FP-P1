@@ -8,12 +8,20 @@ def listToString(lst):
 
 
 def temSegundoTurno(candidatos):
-    # Encontrando o maior número de votos
-    maior_voto = max(candidatos.values())
+    print(candidatos)
 
-    # Criando uma lista dos candidatos que têm o maior número de votos
-    candidatos_maiores_votos = [candidato for candidato, votos in candidatos.items() if votos == maior_voto]
-    candidatos_maiores_votos = candidatos_maiores_votos[:2]
+    votos_maiores = sorted(candidatos.values(), reverse=True)
+
+    candidatos_maiores_votos = []
+    candidatos_2 = candidatos.copy()
+    for maior_voto in votos_maiores:
+        if len(candidatos_maiores_votos) == 2:
+            break
+        for candidato, votos in candidatos.items():
+            if candidatos_2.get(candidato) is not None and votos == maior_voto:
+                candidatos_maiores_votos.append(candidato)
+                candidatos_2.pop(candidato)
+                break
 
     print(
         f'Tivemos um empate, {VERDE(listToString(candidatos_maiores_votos))} tiveram a mesma quantidade de votos: {VERDE(maior_voto)}. O {VERDE('ganhador')} vai ser definido por um segundo turno.')
@@ -26,7 +34,7 @@ def temSegundoTurno(candidatos):
                 input(f"Digite a quantidade de {VERDE('votos')} do {VERDE(candidato)} no segundo turno: "))
             while candidatos[candidato] < 0:
                 print('Quantidade de {} invalida! Não existe uma quantidade {} de {}.'
-                      .format(VERMELHO('votos'),  VERMELHO('negativa'),VERMELHO('votos')))
+                      .format(VERMELHO('votos'), VERMELHO('negativa'), VERMELHO('votos')))
                 candidatos[candidato] = int(
                     input(f"Digite a quantidade de {VERDE('votos')} do {VERDE(candidato)} no segundo turno: "))
 
@@ -61,4 +69,3 @@ def temSegundoTurno(candidatos):
         print(
             f'O {VERDE(candidato)} recebeu {VERDE(round(porcentagem[i], 2))}{VERDE('%')} dos {VERDE('votos totais')} no segundo turno.')
     print('-' * 140)
-
