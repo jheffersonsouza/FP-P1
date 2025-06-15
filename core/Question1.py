@@ -88,8 +88,12 @@ candidatos = {"Candidato 1": C1, "Candidato 2": C2, "Candidato 3": C3, "Candidat
 ganhador = max(candidatos, key=candidatos.get)
 
 # Conforme o TSE se o candidato com a maior quantidade de votos não tiver pelo menos 50% dos votos válidos haverá segundo turno.
-if max(candidatos.values()) / VV < VV / 2:
+if max(candidatos.values()) * 100 / VV < 50:
     temSegundoTurno(candidatos)
 else:
+    # Se houver mais do que 1 candidato com o maior número de votos, há um empate.
+    # Nesse caso optamos por um segundo turno em caso desse tipo de empate.
+    #Ex. 2 candidatos com X votos e o restante com 0 votos.
+    if list(candidatos.values()).count(max(candidatos.values())) > 1:
+        temSegundoTurno(candidatos)
     print('O candidato {} foi {}!'.format(VERDE('vencedor'), ganhador))
-    print('-' * 80)

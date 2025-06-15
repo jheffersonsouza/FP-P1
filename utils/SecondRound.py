@@ -8,13 +8,12 @@ def listToString(lst):
 
 
 def temSegundoTurno(candidatos):
-    print(candidatos)
-
     votos_maiores = sorted(candidatos.values(), reverse=True)
 
     candidatos_maiores_votos = []
     candidatos_2 = candidatos.copy()
     for maior_voto in votos_maiores:
+        # Se minha lista já tiver os 2 candidatos de maior voto já pode parar.
         if len(candidatos_maiores_votos) == 2:
             break
         for candidato, votos in candidatos.items():
@@ -23,8 +22,8 @@ def temSegundoTurno(candidatos):
                 candidatos_2.pop(candidato)
                 break
 
-    print(
-        f'Tivemos um empate, {VERDE(listToString(candidatos_maiores_votos))} tiveram a mesma quantidade de votos: {VERDE(maior_voto)}. O {VERDE('ganhador')} vai ser definido por um segundo turno.')
+    print(f'{VERMELHO("Nenhum Candidato")} possui a condição de vitória necessaria ({VERDE('50% dos votos válidos')}).')
+    print(f'O {VERDE('ganhador')} vai ser definido por um segundo turno entre os dois Candidatos com mais votos.({VERDE(listToString(candidatos_maiores_votos))})')
 
     # Limpando candidatos para ficarem somente os dos segundo turno.
     candidatos.clear()
